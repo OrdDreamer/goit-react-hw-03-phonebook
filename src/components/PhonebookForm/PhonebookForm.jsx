@@ -4,18 +4,14 @@ import { Component } from 'react';
 
 export default class PhonebookForm extends Component {
 
-  constructor(props) {
-    super(props);
-    this.addContact = props.addContact;
-    this.state = {
-      name: '',
-      number: '',
-    };
-  }
+  state = {
+    name: '',
+    number: '',
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.addContact({ ...this.state })) {
+    if (this.props.addContact({ ...this.state })) {
       this.reset();
     }
   };
@@ -26,7 +22,7 @@ export default class PhonebookForm extends Component {
   };
 
   reset() {
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   }
 
   render() {
@@ -51,10 +47,10 @@ export default class PhonebookForm extends Component {
             value={this.state.number}
             onChange={this.handleChange}
             className={styles.formInput}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            type='tel'
+            name='number'
+            pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
+            title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
             required
           />
         </div>
